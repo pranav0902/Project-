@@ -33,7 +33,8 @@ def generate_spectra(pixels,a1,b1,c1,d1,e1,f1,a2,b2,c2,d2,e2,f2,rv_1,rv_2):
 	return new_fluxes
 
 def produce_labels(fluxes,pixels):
-	popt,pcov = curve_fit(generate_spectra,pixels,fluxes,bounds = ([4006,0.65,-2.23,0.94,3.06,0.0,4006,0.65,-2.23,0.94,3.06,0.0,-300,0],[7431,4.74,0.52,2.64,29.45,0.4,7431,4.74,0.52,2.64,29.45,0.4,0,300]))
+	pixels_of_1 = [wavelength*(1+(-100/c)) for wavelength in pixels]
+	popt,pcov = curve_fit(generate_spectra,pixels_of_1,fluxes,bounds = ([4006,0.65,-2.23,0.94,3.06,0.0,4006,0.65,-2.23,0.94,3.06,0.0,-300,-300],[7431,4.74,0.52,2.64,29.45,0.4,7431,4.74,0.52,2.64,29.45,0.4,300,300]))
 	return popt
 
 
