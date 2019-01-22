@@ -7,7 +7,7 @@ def verify_code():
 	loggs = []
 	derived_teffs = []
 	derived_loggs = []
-	while i in range(0,125):
+	while i in range(0,5):
 		i += 1
 		stellar_labels_1 = model.training_set_labels[np.random.randint(0,len(model.training_set_labels))]
 		stellar_labels_2 = model.training_set_labels[np.random.randint(0,len(model.training_set_labels))]
@@ -19,8 +19,6 @@ def verify_code():
 		loggs.append([stellar_labels_1[1],stellar_labels_2[1]])
 		derived_loggs.append([popt[1],popt[7]])
 		derived_teffs.append([popt[0],popt[6]])
-
-def plot():
 	fig,ax = plt.subplots(1,2)
 	ax[0].scatter(teffs,derived_teffs)
 	ax[1].scatter(loggs,derived_loggs)
